@@ -1,0 +1,22 @@
+{
+    "project_id": "04_50-12 Nina",
+    "transcript_path": "inputs/Coach Adele/04_50-12 Nina/04_50-12 _Nina_transcript.srt",
+    "brand_avatar_path": "inputs/Coach Adele/04_50-12 Nina/Nina-avatar.png",
+    "selected_arc": "The Witness",
+    "protagonist_voice": "Client",
+    "unified_frame_statement": "Nina shares her transformation story with Coach Adele, showing how mastering her alimentation helped her overcome paralyzing hypersensitivity and energy crashes, and achieve the clarity to launch her own African fabric brand.",
+    "thematic_spr": {
+        "line_1_hook": "Hypersensitivity, Absorbing energies, Victim of environment",
+        "line_2_setup": "Nurse logic, Heavy food, Medical doubts",
+        "line_3_challenge": "Energy crashes (4/10), Hiding, Fear of madness",
+        "line_4_turning": "Alignment, Maman Adele, Food as fuel",
+        "line_5_resolution": "Stability (9/10), Lightness, Audacity",
+        "line_6_cta": "Creation (Eé), Listen to self, Foncer"
+    },
+    "required_agents": {
+        "hunter": "agents/phase1_writers/arc_hunters/🔎 THE WITNESS HUNTER.md",
+        "analyst": "agents/phase1_writers/arc_analysts/THE WITNESS ANALYST.md",
+        "composer": "agents/phase1_writers/composers/THE WITNESS COMPOSER.md",
+        "commander": "agents/commanders/arc_commanders/THE WITNESS COMMANDER.md"
+    }
+}

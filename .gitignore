@@ -1,0 +1,32 @@
+# --- Security (CRITICAL) ---
+.env
+api_keys.txt
+secrets.json
+*_secrets.md
+
+# --- System & Cache ---
+__pycache__/
+*.py[cod]
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.log
+
+# --- Large Media Assets (Don't upload these!) ---
+# We want to keep the text scripts but ignore the heavy video/image output
+# unless you specifically want to pay for LFS (Large File Storage).
+*.mp4
+*.mov
+*.mp3
+*.wav
+
+# --- Generated Assets Folders ---
+# Optional: Uncomment if you only want to save code/prompts, not the output images
+# **/04_assets/generated_images/
+# **/04_assets/e-roll/
+
+# --- Temporary / Scratch ---
+temp/
+tmp/
+OUTPUT_REGEN/

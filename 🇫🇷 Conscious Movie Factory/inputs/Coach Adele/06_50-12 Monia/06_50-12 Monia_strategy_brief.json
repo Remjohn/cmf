@@ -1,0 +1,42 @@
+{
+    "project_id": "06_50-12 Monia",
+    "project_folder": "06_50-12 Monia",
+    "coach_name": "Maman Kazaku",
+    "coach_alias": "Maman Adele",
+    "transcript_path": "06_50-12_Monia_transcript.srt",
+    "transcript_clean_path": "06_50-12 Monia_transcript_clean.md",
+    "brand_avatar_path": "Monia_avatar.png",
+    "selected_arc": "The Witness",
+    "protagonist_voice": "Client",
+    "protagonist_name": "Monia",
+    "protagonist_constraint": "MONIA ONLY - No quotes from Fitou (papa)",
+    "arc_diagnosis": {
+        "confidence_score": 95,
+        "primary_arc": "The Witness",
+        "anti_patterns": [
+            "coach_dominance",
+            "mixed_testimonial"
+        ],
+        "reasoning": "Monia is a wellness coaching client sharing her transformation story with Maman Kazaku. Clear before/after narrative with measurable health improvements. This is a WITNESS arc testimonial with the client as protagonist."
+    },
+    "unified_frame_statement": "Monia, une maman africaine en Occident épuisée par le métro-boulot-dodo, découvre avec Maman Kazaku comment l'alimentation consciente lui permet de retrouver son énergie (passant de 1 à 11/10), sa clarté mentale, et une harmonie familiale qu'elle transmet maintenant à ses enfants.",
+    "spr_thematic": {
+        "core_tension": "Épuisement maternel vs Plein potentiel retrouvé",
+        "transformation_vector": "Alimentation industrielle → Alimentation consciente → Énergie + Clarté + Harmonie",
+        "soul_tribe_hook": "Maman africaine en Occident qui carbure pour sa famille sans jamais s'occuper d'elle-même"
+    },
+    "key_metrics_extracted": {
+        "energy_before": "1/10 (s'endormait après le dîner)",
+        "energy_after": "10-11/10 (active à fond la caisse jusqu'au soir)",
+        "identity_before": "5-6/10",
+        "identity_after": "8-9/10",
+        "food_clarity_before": "4-5/10",
+        "food_clarity_after": "9/10",
+        "wake_quality_before": "4/10 (boudait le matin)",
+        "wake_quality_after": "8/10 (5h30 sans réveil, pensées positives)",
+        "child_transformation": "Maîtresse a dit 'On n'a pas reconnu votre fils' après 4 mois"
+    },
+    "language": "French",
+    "content_type": "testimonial",
+    "generation_timestamp": "2026-01-13T17:20:00+01:00"
+}

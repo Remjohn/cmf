@@ -1,0 +1,22 @@
+{
+    "project_id": "03_50-12 Jean Pierre",
+    "project_folder": "inputs/Coach Adele/03_50-12 Jean Pierre",
+    "transcript_path": "inputs/Coach Adele/03_50-12 Jean Pierre/03_50-12_Jean Pierre_transcript_clean.md",
+    "brand_avatar_path": "inputs/Coach Adele/03_50-12 Jean Pierre/Jean-Pierre-avatar.png",
+    "selected_arc": "The Witness",
+    "protagonist_voice": "Client",
+    "unified_frame_statement": "Jean-Pierre shares his transformation story with the community, showing how the holistic liver detox and the 'corpuscular approach' helped him overcome deep-seated generational traumas and disconnection, and achieve a state of 'renaissance', lightness, and true alignment with his local environment.",
+    "thematic_spr": {
+        "line_1_hook": "Nature guide, Missing puzzle piece, Searching",
+        "line_2_setup": "Esoteric knowledge, Diaspora disconnection, Generational weight",
+        "line_3_challenge": "Inner disorder, 'Corpuscular' gap, Heavy liver",
+        "line_4_turning": "The Detox, Cleaning layers, Vision clearing",
+        "line_5_resolution": "Renaissance, Flying, Lightness, Alignment",
+        "line_6_cta": "Self-responsibility, Life is magic, Infuse love"
+    },
+    "required_agents": {
+        "hunter": "agents/phase1_writers/arc_hunters/🔎 THE WITNESS HUNTER.md",
+        "composer": "agents/phase1_writers/composers/THE WITNESS COMPOSER.md",
+        "commander": "agents/commanders/arc_commanders/THE WITNESS COMMANDER.md"
+    }
+}

@@ -1,0 +1,155 @@
+{
+    "1": {
+        "inputs": {
+            "image": "placeholder_image.png",
+            "upload": "image"
+        },
+        "class_type": "LoadImage",
+        "_meta": {
+            "title": "Load End Frame"
+        }
+    },
+    "2": {
+        "inputs": {
+            "vae_name": "ae.safetensors"
+        },
+        "class_type": "VAELoader",
+        "_meta": {
+            "title": "Load VAE"
+        }
+    },
+    "3": {
+        "inputs": {
+            "pixels": [
+                "1",
+                0
+            ],
+            "vae": [
+                "2",
+                0
+            ]
+        },
+        "class_type": "VAEEncode",
+        "_meta": {
+            "title": "VAE Encode"
+        }
+    },
+    "4": {
+        "inputs": {
+            "clip_name": "qwen_3_4b.safetensors",
+            "type": "lumina2",
+            "device": "default"
+        },
+        "class_type": "CLIPLoader",
+        "_meta": {
+            "title": "Load CLIP (Qwen 3.4B)"
+        }
+    },
+    "5": {
+        "inputs": {
+            "text": "PLACEHOLDER_EDIT_PROMPT",
+            "clip": [
+                "4",
+                0
+            ]
+        },
+        "class_type": "CLIPTextEncode",
+        "_meta": {
+            "title": "Edit Instructions"
+        }
+    },
+    "6": {
+        "inputs": {
+            "conditioning": [
+                "5",
+                0
+            ]
+        },
+        "class_type": "ConditioningZeroOut",
+        "_meta": {
+            "title": "Negative"
+        }
+    },
+    "7": {
+        "inputs": {
+            "unet_name": "z_image_turbo_bf16.safetensors",
+            "weight_dtype": "default"
+        },
+        "class_type": "UNETLoader",
+        "_meta": {
+            "title": "Load Z-Image Turbo"
+        }
+    },
+    "8": {
+        "inputs": {
+            "shift": 3,
+            "model": [
+                "7",
+                0
+            ]
+        },
+        "class_type": "ModelSamplingAuraFlow",
+        "_meta": {
+            "title": "Model Sampling"
+        }
+    },
+    "9": {
+        "inputs": {
+            "seed": 123456789,
+            "steps": 8,
+            "cfg": 1,
+            "sampler_name": "euler",
+            "scheduler": "simple",
+            "denoise": 0.7,
+            "model": [
+                "8",
+                0
+            ],
+            "positive": [
+                "5",
+                0
+            ],
+            "negative": [
+                "6",
+                0
+            ],
+            "latent_image": [
+                "3",
+                0
+            ]
+        },
+        "class_type": "KSampler",
+        "_meta": {
+            "title": "KSampler (Img2Img)"
+        }
+    },
+    "10": {
+        "inputs": {
+            "samples": [
+                "9",
+                0
+            ],
+            "vae": [
+                "2",
+                0
+            ]
+        },
+        "class_type": "VAEDecode",
+        "_meta": {
+            "title": "VAE Decode"
+        }
+    },
+    "11": {
+        "inputs": {
+            "filename_prefix": "CMF_Edit_StartFrame",
+            "images": [
+                "10",
+                0
+            ]
+        },
+        "class_type": "SaveImage",
+        "_meta": {
+            "title": "Save Start Frame"
+        }
+    }
+}

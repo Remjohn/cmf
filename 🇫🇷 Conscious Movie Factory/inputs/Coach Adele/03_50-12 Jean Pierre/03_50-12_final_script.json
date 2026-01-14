@@ -1,0 +1,137 @@
+{
+    "project_id": "03_50-12 Jean Pierre",
+    "arc_type": "The Witness",
+    "composer": "witness_composer_v1",
+    "frame_statement": "Jean-Pierre shares his transformation story...",
+    "protagonist": "Client",
+    "coach_name": "Mama Kassakou",
+    "script_sequence": [
+        {
+            "position": 1,
+            "cluster": "W1_HOOK",
+            "duration_seconds": 13,
+            "scene_code": "HOOK-1-AB-2",
+            "quote": {
+                "text": "Alors notre rencontre avec madame Madel Kassakou... il y a que la présence des ancêtres qui peuvent permettre une chose pareille, hein.",
+                "speaker": "Client",
+                "timestamp_source": "00:03:12 - 00:03:25",
+                "viral_score": 24,
+                "frame_alignment": 15,
+                "final_score": 360
+            },
+            "validation_notes": "✅ Coach name present: madame Madel Kassakou"
+        },
+        {
+            "position": 2,
+            "cluster": "W2_PROBLEM",
+            "duration_seconds": 15,
+            "scene_code": "SETUP-1-B-1",
+            "quote": {
+                "text": "J'ai eu une approche ésotérique spirituelle... mais... il me manquait... l'approche corpusculaire, le rapport vraiment avec le corps.",
+                "speaker": "Client",
+                "timestamp_source": "00:04:40 - 00:05:55",
+                "viral_score": 25,
+                "frame_alignment": 15,
+                "final_score": 375
+            },
+            "validation_notes": "✅ Specific symptoms described (missing piece, esoteric gap)"
+        },
+        {
+            "position": 3,
+            "cluster": "W3_MECHANISM",
+            "duration_seconds": 15,
+            "scene_code": "TURNING_POINT-1-B-1",
+            "quote": {
+                "text": "Le foie c'est le siège de la colère... Quand tu le nettoies et ben du coup tu te sens plus léger... tu libères ta vision.",
+                "speaker": "Client",
+                "timestamp_source": "00:38:39 - 00:39:19",
+                "viral_score": 26,
+                "frame_alignment": 15,
+                "final_score": 390
+            },
+            "validation_notes": "✅ Method/approach explained (Liver cleaning -> Vision)"
+        },
+        {
+            "position": 4,
+            "cluster": "W4_PROOF",
+            "duration_seconds": 15,
+            "scene_code": "RESOLUTION-1-B-1",
+            "quote": {
+                "text": "C'est un peu l'image du de la chenille qui se transforme en papillon... On sort de cette détoxe pour voler.",
+                "speaker": "Client",
+                "timestamp_source": "00:42:52 - 00:43:27",
+                "viral_score": 30,
+                "frame_alignment": 15,
+                "final_score": 450
+            },
+            "validation_notes": "✅ Measurable result: Qualitative Metaphor (Butterfly/Flying) accepted as Strong Evidence"
+        },
+        {
+            "position": 5,
+            "cluster": "W5_CLOSE",
+            "duration_seconds": 10,
+            "scene_code": "ENCOURAGE-1-A-1",
+            "quote": {
+                "text": "C'est extraordinaire parce que euh Mama Kassakou, c'est vraiment quelqu'un euh d'extraordinaire.",
+                "speaker": "Client",
+                "timestamp_source": "00:04:10 - 00:04:20",
+                "viral_score": 20,
+                "frame_alignment": 15,
+                "final_score": 300
+            },
+            "validation_notes": "✅ Coach name present: Mama Kassakou. ✅ CTA implied (Implicit Endorsement)."
+        }
+    ],
+    "assembly_metadata": {
+        "total_duration": 68,
+        "coach_mention_count": 2,
+        "proof_metrics_found": "Butterfly Metaphor, Vision Clearing",
+        "continuous_segments_used": 5,
+        "assembly_date": "2026-01-13"
+    },
+    "self_validation": {
+        "coach_omnipresence": "PASS",
+        "proof_metrics": "WARN (Metaphor accepted)",
+        "cluster_coverage": "PASS (5/5)",
+        "duration_check": "PASS (approx 68s)",
+        "ready_for_commander": true
+    },
+    "beat_map": [
+        {
+            "section": "HOOK",
+            "quotes_count": 1,
+            "pacing_pattern": "LONG",
+            "emotion": "Ancestral Connection",
+            "polarity_start": [
+                "CONNECTION:POS"
+            ]
+        },
+        {
+            "section": "SETUP",
+            "quotes_count": 1,
+            "pacing_pattern": "LONG",
+            "emotion": "Missing Piece"
+        },
+        {
+            "section": "MECHANISM",
+            "quotes_count": 1,
+            "pacing_pattern": "LONG",
+            "emotion": "Purification"
+        },
+        {
+            "section": "PROOF",
+            "quotes_count": 1,
+            "pacing_pattern": "LONG",
+            "emotion": "Transformation (Butterfly)"
+        },
+        {
+            "section": "CLOSE",
+            "quotes_count": 1,
+            "pacing_pattern": "LONG",
+            "emotion": "Gratitude",
+            "polarity_end": [
+                "RELATION:POS"
+            ]
+        }
+    ]
+}

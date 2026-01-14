@@ -1,0 +1,141 @@
+{
+    "project_id": "02_50-12 Audrey",
+    "arc_type": "The Witness",
+    "composer": "witness_composer_v1",
+    "frame_statement": "Audrey shares her journey from physical disconnection and unexplained symptoms to holistic clarity and realignment with Maman Kazaku's guidance.",
+    "protagonist": "Client",
+    "coach_name": "Maman Kazaku",
+    "script_sequence": [
+        {
+            "position": 1,
+            "cluster": "W1_HOOK",
+            "duration_seconds": 9,
+            "scene_code": "HOOK-1-AB-2",
+            "quote": {
+                "text": "Maman avait du travail avec moi... elle a eu un gros taf avec moi et je pense qu'elle en a écrit des feuilles.",
+                "speaker": "Client",
+                "timestamp_source": "07:11 - 07:20",
+                "viral_score": 28,
+                "frame_alignment": 10,
+                "final_score": 28
+            },
+            "validation_notes": "✅ Coach name present: Maman"
+        },
+        {
+            "position": 2,
+            "cluster": "W2_PROBLEM",
+            "duration_seconds": 9,
+            "scene_code": "SETUP-1-B-1",
+            "quote": {
+                "text": "J'avais tellement de symptômes en fait que ce soit au niveau des vertiges de l'acidité... la fatigue.",
+                "speaker": "Client",
+                "timestamp_source": "08:02 - 08:11",
+                "viral_score": 27,
+                "frame_alignment": 9,
+                "final_score": 24.3
+            },
+            "validation_notes": "✅ Specific symptoms described"
+        },
+        {
+            "position": 3,
+            "cluster": "W3_MECHANISM",
+            "duration_seconds": 10,
+            "scene_code": "TURNING_POINT-1-B-1",
+            "quote": {
+                "text": "Vraiment les termes scientifiques appropriés la logique le biorythme et cetera là c'est bluffant.",
+                "speaker": "Client",
+                "timestamp_source": "11:51 - 12:01",
+                "viral_score": 26,
+                "frame_alignment": 9,
+                "final_score": 23.4
+            },
+            "validation_notes": "✅ Method/approach explained"
+        },
+        {
+            "position": 4,
+            "cluster": "W4_PROOF",
+            "duration_seconds": 15,
+            "scene_code": "RESOLUTION-1-B-1",
+            "quote": {
+                "text": "Je tiens très bien la route... Avant il fallait absolument que je m'accorde une sieste pour être opérationnel dans la 2e partie de journée... là maintenant je pense que mon corps a ce qu'il faut.",
+                "speaker": "Client",
+                "timestamp_source": "22:07 - 22:22",
+                "viral_score": 29,
+                "frame_alignment": 10,
+                "final_score": 29
+            },
+            "validation_notes": "✅ Measurable result: No more naps needed (Sieste)"
+        },
+        {
+            "position": 5,
+            "cluster": "W5_CLOSE",
+            "duration_seconds": 10,
+            "scene_code": "ENCOURAGE-1-A-1",
+            "quote": {
+                "text": "Ce que maman met en place c'est au nom de quelque chose de collectif... je me dis que si on y arrive pour soi ben on peut s'entraider.",
+                "speaker": "Client",
+                "timestamp_source": "33:04 - 33:14",
+                "viral_score": 24,
+                "frame_alignment": 8,
+                "final_score": 19.2
+            },
+            "validation_notes": "✅ Coach name present: Maman"
+        }
+    ],
+    "beat_map": [
+        {
+            "section": "HOOK",
+            "quotes_count": 1,
+            "pacing_pattern": "JAB",
+            "emotion": "Humor/Acknowledgment",
+            "polarity_start": [
+                "WEIGHT:HEAVY"
+            ]
+        },
+        {
+            "section": "SETUP",
+            "quotes_count": 1,
+            "pacing_pattern": "MEDIUM",
+            "emotion": "Overwhelm"
+        },
+        {
+            "section": "TURNING_POINT",
+            "quotes_count": 1,
+            "pacing_pattern": "MEDIUM",
+            "emotion": "Intellectual Clarity",
+            "soul_quote": false
+        },
+        {
+            "section": "RESOLUTION",
+            "quotes_count": 1,
+            "pacing_pattern": "JAB-MEDIUM",
+            "emotion": "Vitality",
+            "soul_quote": true
+        },
+        {
+            "section": "CTA",
+            "quotes_count": 1,
+            "pacing_pattern": "SLOW",
+            "emotion": "Collective Responsibility",
+            "polarity_end": [
+                "WEIGHT:LIGHT"
+            ]
+        }
+    ],
+    "assembly_metadata": {
+        "total_duration": 53,
+        "coach_mention_count": 2,
+        "proof_metrics_found": [
+            "Sieste elimination"
+        ],
+        "continuous_segments_used": 5,
+        "assembly_date": "2026-01-13"
+    },
+    "self_validation": {
+        "coach_omnipresence": "PASS",
+        "proof_metrics": "PASS",
+        "cluster_coverage": "PASS (5/5)",
+        "duration_check": "PASS (53s)",
+        "ready_for_commander": true
+    }
+}

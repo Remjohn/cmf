@@ -1,0 +1,138 @@
+{
+    "project_id": "06_50-12 Monia",
+    "arc_type": "The Witness",
+    "protagonist": "Monia",
+    "protagonist_constraint": "MONIA ONLY",
+    "coach_name": "Maman Kazaku",
+    "language": "French",
+    "total_duration_target": "60s",
+    "composition_version": "V3_WITNESS",
+    "unified_frame": "Monia, une maman africaine en Occident épuisée par le métro-boulot-dodo, découvre avec Maman Kazaku comment l'alimentation consciente lui permet de retrouver son énergie (passant de 1 à 11/10), sa clarté mentale, et une harmonie familiale.",
+    "script_structure": {
+        "W1_HOOK": {
+            "cluster_id": "W1",
+            "function": "HOOK",
+            "timing": "00:00 - 00:08",
+            "duration_seconds": 8,
+            "selected_quote": {
+                "id": "W1-01",
+                "text": "Avec maman Kazaku, maman Adelle, l'automne dernier, l'automne 2024, on l'a vu pour la première fois et moi j'ai scotché quoi ?",
+                "srt_segment": 5,
+                "source_start": "02:55",
+                "source_end": "03:07",
+                "speaker": "MONIA",
+                "viral_score": 26,
+                "functional_tag": "COACH_INTRO"
+            },
+            "scene_assignment": "SETUP-1-A-1",
+            "visual_note": "Monia face caméra, expression de découverte"
+        },
+        "W2_PROBLEM": {
+            "cluster_id": "W2",
+            "function": "PROBLEM",
+            "timing": "00:08 - 00:20",
+            "duration_seconds": 12,
+            "selected_quote": {
+                "id": "W2-01",
+                "text": "Moi je m'endormais après le dîner. En tant que maman de petits enfants, j'étais chaormais sur la table comme ça. Bom, j'étais parti. J'étais vraiment épuisée. L'épuisement.",
+                "srt_segment": 15,
+                "source_start": "08:23",
+                "source_end": "08:40",
+                "speaker": "MONIA",
+                "viral_score": 28,
+                "functional_tag": "PHYSICAL_PAIN"
+            },
+            "scene_assignment": "SETUP-1-B-1",
+            "visual_note": "B-Roll: Mère fatiguée, tête sur table, ambiance sombre"
+        },
+        "W3_MECHANISM": {
+            "cluster_id": "W3",
+            "function": "MECHANISM",
+            "timing": "00:20 - 00:35",
+            "duration_seconds": 15,
+            "selected_quote": {
+                "id": "W3-01",
+                "text": "J'avais l'image que c'est comme la chambre d'un enfant, elle est venue, ça a l'air voilà tout est là, c'est un peu désordonné. Elle est venue mettre de l'ordre, les choses à leur place comme ça. C'est là que ça devient effectif, c'est là que ça devient productif.",
+                "srt_segment": [
+                    23,
+                    24
+                ],
+                "source_start": "12:43",
+                "source_end": "13:30",
+                "speaker": "MONIA",
+                "viral_score": 27,
+                "functional_tag": "MECHANISM_METAPHOR"
+            },
+            "scene_assignment": "TURNING_POINT-1-B-1",
+            "visual_note": "B-Roll: Métaphore chambre désordonnée → rangée"
+        },
+        "W4_PROOF": {
+            "cluster_id": "W4",
+            "function": "PROOF",
+            "timing": "00:35 - 00:50",
+            "duration_seconds": 15,
+            "selected_quote": {
+                "id": "W4-01",
+                "text": "On est passé de 1 à 5... Ah ça va jusqu'à 10. Ben on prend 11 alors. Je carbure là pour l'instant. En tant que maman, je suis active à fond la caisse jusqu'au soir sans problème. Je me reconnais pas. Ça m'étonne. Moi-même je suis là waouh. Je suis à 10 ou bien 11. Prenez 12 si vous voulez.",
+                "srt_segment": [
+                    69,
+                    70
+                ],
+                "source_start": "37:08",
+                "source_end": "38:12",
+                "speaker": "MONIA",
+                "viral_score": 32,
+                "functional_tag": "PROOF_METRIC"
+            },
+            "scene_assignment": "RESOLUTION-1-B-1",
+            "visual_note": "Monia rayonnante, gestuelle enthousiaste, montrer énergie",
+            "proof_metrics": {
+                "before": "1/10",
+                "after": "10-11/10",
+                "specificity_ladder": 9
+            }
+        },
+        "W5_CLOSE": {
+            "cluster_id": "W5",
+            "function": "CLOSE",
+            "timing": "00:50 - 01:00",
+            "duration_seconds": 10,
+            "selected_quote": {
+                "id": "W5-01",
+                "text": "Maman Kazaku, maman, c'est une vraie maman. J'ai jamais vécu comme ça un accompagnement, un coaching avec tant d'amour derrière. Elle lâche pas le truc. Elle te lâche pas.",
+                "srt_segment": [
+                    52,
+                    53
+                ],
+                "source_start": "28:22",
+                "source_end": "28:55",
+                "speaker": "MONIA",
+                "viral_score": 29,
+                "functional_tag": "COACH_ENDORSEMENT"
+            },
+            "scene_assignment": "ENCOURAGE-1-A-1",
+            "visual_note": "Monia regarde caméra, sincérité, émotion"
+        }
+    },
+    "composition_metrics": {
+        "total_duration_seconds": 60,
+        "quote_count": 5,
+        "average_viral_score": 28.4,
+        "coach_mentions": 3,
+        "proof_metrics_present": true,
+        "bookend_symmetry": true
+    },
+    "validation_checklist": {
+        "client_is_protagonist": true,
+        "coach_in_hook": true,
+        "coach_in_close": true,
+        "problem_specific": true,
+        "mechanism_clear": true,
+        "proof_with_numbers": true,
+        "authentic_voice": true,
+        "duration_within_range": true
+    },
+    "quality_score": 100,
+    "composer_notes": "Script assembled using MONIA-only quotes per user constraint. Strong maternal sacrifice narrative with clear energy transformation arc (1→11). Bookends echo 'maman' theme. Perfect WITNESS arc structure.",
+    "generation_timestamp": "2026-01-13T17:25:00+01:00"
+}

@@ -1,0 +1,19 @@
+{
+    "project_id": "02_50-12 Audrey",
+    "transcript_path": "inputs/Coach Adele/02_50-12 Audrey/02_50-12 Audrey Transcript.srt",
+    "selected_arc": "The Witness",
+    "protagonist_voice": "Client",
+    "unified_frame_statement": "Audrey shares her journey from physical disconnection and unexplained symptoms to holistic clarity and realignment with Maman Kazaku's guidance.",
+    "thematic_spr": {
+        "line_1_hook": "Vertiges, Crises, Manifestations inexpliquées",
+        "line_2_setup": "Médecins perdus, Peur, Vide, Contradiction",
+        "line_3_challenge": "Dissociation, Cries des corps, Urgence",
+        "line_4_turning": "Nettoyage, Table rase, Maman Kazaku, JP",
+        "line_5_resolution": "Clarté, Reconnexion, Sens, Transmission",
+        "line_6_cta": "Responsabilité, Lumière, Futur génération"
+    },
+    "required_agents": {
+        "hunter": "agents/phase1_writers/arc_hunters/🔎 THE WITNESS HUNTER.md",
+        "composer": "agents/phase1_writers/composers/THE WITNESS COMPOSER.md"
+    }
+}

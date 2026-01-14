@@ -1,0 +1,66 @@
+{
+    "project_id": "06_50-12 Monia",
+    "project_name": "Monia",
+    "arc_type": "The Witness",
+    "protagonist": "Monia",
+    "coach_name": "Maman Kazaku",
+    "total_duration": 60,
+    "language": "French",
+    "scenes": [
+        {
+            "id": "SCENE-01",
+            "cluster_id": "W1",
+            "function": "HOOK",
+            "start_time": "00:00",
+            "end_time": "00:08",
+            "duration": 8,
+            "text": "Avec maman Kazaku, maman Adelle, l'automne dernier, l'automne 2024, on l'a vu pour la première fois et moi j'ai scotché quoi ?",
+            "speaker": "MONIA",
+            "visual_note": "Monia face caméra, expression de découverte"
+        },
+        {
+            "id": "SCENE-02",
+            "cluster_id": "W2",
+            "function": "PROBLEM",
+            "start_time": "00:08",
+            "end_time": "00:20",
+            "duration": 12,
+            "text": "Moi je m'endormais après le dîner. En tant que maman de petits enfants, j'étais chaormais sur la table comme ça. Bom, j'étais parti. J'étais vraiment épuisée. L'épuisement.",
+            "speaker": "MONIA",
+            "visual_note": "B-Roll: Mère fatiguée, tête sur table, ambiance sombre"
+        },
+        {
+            "id": "SCENE-03",
+            "cluster_id": "W3",
+            "function": "MECHANISM",
+            "start_time": "00:20",
+            "end_time": "00:35",
+            "duration": 15,
+            "text": "J'avais l'image que c'est comme la chambre d'un enfant, elle est venue, ça a l'air voilà tout est là, c'est un peu désordonné. Elle est venue mettre de l'ordre, les choses à leur place comme ça. C'est là que ça devient effectif, c'est là que ça devient productif.",
+            "speaker": "MONIA",
+            "visual_note": "B-Roll: Métaphore chambre désordonnée → rangée"
+        },
+        {
+            "id": "SCENE-04",
+            "cluster_id": "W4",
+            "function": "PROOF",
+            "start_time": "00:35",
+            "end_time": "00:50",
+            "duration": 15,
+            "text": "On est passé de 1 à 5... Ah ça va jusqu'à 10. Ben on prend 11 alors. Je carbure là pour l'instant. En tant que maman, je suis active à fond la caisse jusqu'au soir sans problème. Je me reconnais pas. Ça m'étonne. Moi-même je suis là waouh. Je suis à 10 ou bien 11. Prenez 12 si vous voulez.",
+            "speaker": "MONIA",
+            "visual_note": "Monia rayonnante, gestuelle enthousiaste, montrer énergie"
+        },
+        {
+            "id": "SCENE-05",
+            "cluster_id": "W5",
+            "function": "CLOSE",
+            "start_time": "00:50",
+            "end_time": "01:00",
+            "duration": 10,
+            "text": "Maman Kazaku, maman, c'est une vraie maman. J'ai jamais vécu comme ça un accompagnement, un coaching avec tant d'amour derrière. Elle lâche pas le truc. Elle te lâche pas.",
+            "speaker": "MONIA",
+            "visual_note": "Monia regarde caméra, sincérité, émotion"
+        }
+    ]
+}

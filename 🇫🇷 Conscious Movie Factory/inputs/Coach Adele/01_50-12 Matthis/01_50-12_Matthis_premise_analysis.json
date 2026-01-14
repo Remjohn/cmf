@@ -1,0 +1,283 @@
+{
+    "session_metadata": {
+        "project_id": "01_50-12_Matthis",
+        "client_name": "Matthis",
+        "coach_name": "Adele (Mam'Adele / Adele Kasaku)",
+        "analysis_date": "2025-12-25T19:31:00+01:00",
+        "arc_type": "THE WITNESS ARC",
+        "transcript_duration_estimate": "43 minutes",
+        "language": "French"
+    },
+    "witness_frame": "Matthis (27 ans, artiste-musicien de la Réunion) partage sa transformation avec Adele Kasaku, montrant comment l'approche holistique corps-esprit l'a aidé à surmonter l'anxiété chronique, l'autosabotage et la fatigue, retrouvant le courage de prendre ses responsabilités et de monter sur scène.",
+    "executive_summary": {
+        "recommendation": "AVANCER avec le Premise 1 (Courage & Responsabilité) - Excellent potentiel viral grâce aux citations émotionnellement chargées sur la peur et la transformation",
+        "best_premise": {
+            "number": 1,
+            "title": "Du Spectateur au Créateur de sa Vie",
+            "viral_score": "72/80",
+            "why": "Arc de transformation clair avec progression 4→7 en énergie, métaphore puissante du courage comme 'étincelle', et coaching direct d'Adele sur la peur"
+        }
+    },
+    "premises": [
+        {
+            "premise_number": 1,
+            "premise_title": "Du Spectateur au Créateur de sa Vie",
+            "strategic_intent": "Heart + Proof",
+            "viral_score": {
+                "surprise": 18,
+                "emotion": 19,
+                "specificity": 17,
+                "total": "72/80"
+            },
+            "core_insight": "Matthis passait sa vie à chercher les solutions chez les autres par peur de la responsabilité. L'accompagnement lui a fait comprendre qu'il est créateur de tout ce qui lui arrive.",
+            "emotional_arc": "FROM: Spectateur impuissant, anxieux, autosabotage → TO: Créateur courageux, responsable, maître de sa vie",
+            "quotes": [
+                {
+                    "timestamp": "3:37",
+                    "text": "Moi je suis un grand anxieux de base. La tête vraiment pleine de gaz si on peut dire, pleine de pensée en arborescence, très très contrôlé par mon mental.",
+                    "functional_tag": "SETUP_VULNERABILITY",
+                    "cluster": "W2_PROBLEM"
+                },
+                {
+                    "timestamp": "4:00",
+                    "text": "J'étais quand même très souvent assailli par en fait de l'autosabotage et même si j'avais une grande compréhension de certaines choses, je vivais un autosabotage intérieur qui m'empêchait réellement.",
+                    "functional_tag": "PROBLEM_SPECIFIC",
+                    "cluster": "W2_PROBLEM"
+                },
+                {
+                    "timestamp": "6:00",
+                    "text": "C'était beaucoup de fatigue chronique, fatigue dans les muscles, brouillard mental, manque de sens. L'impression d'être un peu de subir en fait, d'être spectateur.",
+                    "functional_tag": "PROBLEM_VIVID",
+                    "cluster": "W2_PROBLEM"
+                },
+                {
+                    "timestamp": "7:54",
+                    "text": "J'ai ça en moi. C'est quelque chose qui sommeillait. Et donc du coup par confort, j'ai toujours cherché à ce que la solution vienne d'autrui. Par peur en fait de la responsabilité, de prendre ses responsabilités.",
+                    "functional_tag": "VULNERABILITY_DEEP",
+                    "cluster": "W2_PROBLEM"
+                },
+                {
+                    "timestamp": "8:44",
+                    "text": "C'est comme si j'avais une échelle de lucidité en face de moi et en gros semaine après semaine, j'escaladé un barreau supplémentaire.",
+                    "functional_tag": "MECHANISM_METAPHOR",
+                    "cluster": "W3_MECHANISM"
+                },
+                {
+                    "timestamp": "10:09",
+                    "text": "On va dire qu'avant sur une échelle de 1 à 10 niveau d'énergie c'était peut-être 4 et maintenant c'est 7.",
+                    "functional_tag": "PROOF_METRIC",
+                    "cluster": "W4_PROOF"
+                },
+                {
+                    "timestamp": "10:27",
+                    "text": "C'est de l'énergie vraiment qui est venue par l'incarnation du courage en fait. C'est retrouver un courage.",
+                    "functional_tag": "TRANSFORMATION_CORE",
+                    "cluster": "W3_MECHANISM"
+                },
+                {
+                    "timestamp": "11:06",
+                    "text": "Ce qui m'a impacté, c'est le fait de d'avoir le courage de prendre mes responsabilités. Ça crée une étincelle en soi en fait qui se transforme en essence pour avancer dans sa journée.",
+                    "functional_tag": "GOOSEBUMPS_MOMENT",
+                    "cluster": "W4_PROOF"
+                },
+                {
+                    "timestamp": "14:06",
+                    "text": "Maintenant je suis beaucoup plus au contact des sensations de mon corps et je sais beaucoup plus rapidement ce qui est bon pour moi à ingérer, à regarder, à lire, à écouter, à dire.",
+                    "functional_tag": "PROOF_AWARENESS",
+                    "cluster": "W4_PROOF"
+                },
+                {
+                    "timestamp": "17:51",
+                    "text": "Ça a permis de clarifier et d'accentuer et d'authentifier des intuitions et des débuts de comportement alimentaire que j'avais déjà mis en place mais qui était encore un peu pas totalement conscientisé.",
+                    "functional_tag": "MECHANISM_CLARITY",
+                    "cluster": "W3_MECHANISM"
+                },
+                {
+                    "timestamp": "22:07",
+                    "text": "Ce côté un peu impactant, ce côté brut, moi c'est ça qui m'a plu parce que j'aime bien aussi aller au bout des choses. C'est vraiment un beau don de soi de pas avoir peur de dire aux gens les choses qu'ils ont besoin d'entendre.",
+                    "functional_tag": "MECHANISM_APPRECIATION",
+                    "cluster": "W3_MECHANISM"
+                },
+                {
+                    "timestamp": "23:20",
+                    "text": "Avec Adele, on travaille sur la détoxe pas seulement du corps mais sur la détoxe de l'esprit, la détoxe émotionnelle comme elle l'appelle. Ça élargit la compréhension holistique de soi-même.",
+                    "functional_tag": "MECHANISM_HOLISTIC",
+                    "cluster": "W3_MECHANISM"
+                },
+                {
+                    "timestamp": "25:00",
+                    "text": "C'était vraiment c'est vraiment ce rapport à la peur de d'être responsable de ce qu'on fait, de comment on le fait et de ce que ça va engendrer et d'assumer pleinement avec joie qu'on est créateur en fait. Je suis créateur de tout ce qui m'arrive sur tous les plans.",
+                    "functional_tag": "TRANSFORMATION_PEAK",
+                    "cluster": "W4_PROOF"
+                },
+                {
+                    "timestamp": "27:07",
+                    "text": "J'ai perdu mon père peu de temps après. Ça a joué quand même pas mal sur le fait d'accueillir cette épreuve avec plus de douceur et de détachement.",
+                    "functional_tag": "PROOF_UNEXPECTED",
+                    "cluster": "W4_PROOF"
+                },
+                {
+                    "timestamp": "28:40",
+                    "text": "Il y a une reconsolidation qui s'est effectuée qui continue de s'enraciner et il y a vraiment une volonté de continuer à se maîtriser, à évoluer sur tous ces plans.",
+                    "functional_tag": "TRANSFORMATION_ONGOING",
+                    "cluster": "W4_PROOF"
+                },
+                {
+                    "timestamp": "34:03",
+                    "text": "Tout ce rapport à l'émotionnel et comment tout se lit en fait. Cette vision vraiment holistique du tout, le monde intérieur.",
+                    "functional_tag": "BONUS_DISCOVERY",
+                    "cluster": "W4_PROOF"
+                },
+                {
+                    "timestamp": "36:44",
+                    "text": "[ADELE] La vie c'est l'incarner. Autant tu incarnes une peur, autant tu dois aussi incarner ta propre réussite à travers la peur. À travers la peur. Tu dois passer cette peur-là.",
+                    "functional_tag": "COACH_WISDOM",
+                    "cluster": "W5_CLOSE"
+                },
+                {
+                    "timestamp": "38:01",
+                    "text": "[ADELE] Tu vas te faire bouffer. La vie ne se pense pas. La vie s'incarne dans l'expérience.",
+                    "functional_tag": "COACH_PUNCH",
+                    "cluster": "W5_CLOSE"
+                },
+                {
+                    "timestamp": "38:44",
+                    "text": "[ADELE] La peur, c'est juste un appel à l'expérience. Viens par ici. C'est le chemin que tu dois traverser pour trouver derrière ce qu'il te fallait.",
+                    "functional_tag": "COACH_REFRAME",
+                    "cluster": "W5_CLOSE"
+                },
+                {
+                    "timestamp": "40:02",
+                    "text": "Je suis monté sur scène deux fois là, non, trois fois ce mois-ci. Demain, j'ai un nouveau concert. Je fais pas mal de choses. J'essaie vraiment de bouger.",
+                    "functional_tag": "PROOF_ACTION",
+                    "cluster": "W4_PROOF"
+                },
+                {
+                    "timestamp": "40:16",
+                    "text": "[ADELE] On a allumé en toi l'esprit d'incarner la divinité que tu es. Et la divinité n'a pas peur.",
+                    "functional_tag": "COACH_CLOSE",
+                    "cluster": "W5_CLOSE"
+                }
+            ]
+        },
+        {
+            "premise_number": 2,
+            "premise_title": "Le Corps Qui Parle - Écouter Ses Signaux",
+            "strategic_intent": "Mind + Proof",
+            "viral_score": {
+                "surprise": 16,
+                "emotion": 17,
+                "specificity": 18,
+                "total": "68/80"
+            },
+            "core_insight": "La douleur chronique n'est pas juste physique - elle est amplifiée par un système nerveux non maîtrisé et les émotions non gérées.",
+            "emotional_arc": "FROM: Subir la douleur sans comprendre → TO: Comprendre les messages du corps et savoir répondre",
+            "quotes": [
+                {
+                    "timestamp": "30:43",
+                    "text": "C'est c'est des douleurs de dos en fait qui sont des fois activées par un mental aussi qui est très et qui fait que du coup dans la façon de faire les choses, je vais aller vite.",
+                    "functional_tag": "INSIGHT_MIND_BODY",
+                    "cluster": "W3_MECHANISM"
+                },
+                {
+                    "timestamp": "30:55",
+                    "text": "L'inflammation aujourd'hui c'est pas forcément dû aux symptômes. Elle est beaucoup plus due à comment le sujet vit sa vie, les habitudes de vie qu'il a.",
+                    "functional_tag": "INSIGHT_CONTRARIAN",
+                    "cluster": "W3_MECHANISM"
+                },
+                {
+                    "timestamp": "31:01",
+                    "text": "Un système nerveux qui est très faible, qui est très sensible et qui n'est pas maîtrisé, c'est un système nerveux qui va amplifier extrêmement puissamment le signal de la douleur.",
+                    "functional_tag": "MECHANISM_SCIENTIFIC",
+                    "cluster": "W3_MECHANISM"
+                },
+                {
+                    "timestamp": "32:01",
+                    "text": "La mécanique du corps va se retrouver teintée de la mécanique émotionnelle qui elle-même n'est pas gérée.",
+                    "functional_tag": "INSIGHT_SYNERGY",
+                    "cluster": "W3_MECHANISM"
+                },
+                {
+                    "timestamp": "32:14",
+                    "text": "La douleur est un message. C'est pas juste quelque chose comme ça. C'est pas normal de avoir mal de manière chronique.",
+                    "functional_tag": "REFRAME_POWERFUL",
+                    "cluster": "W3_MECHANISM"
+                },
+                {
+                    "timestamp": "32:45",
+                    "text": "C'est une compensation quand le corps est trop fatigué et qu'il ne peut pas se faire entendre, il va créer la douleur pour pouvoir se faire entendre.",
+                    "functional_tag": "INSIGHT_DEEP",
+                    "cluster": "W3_MECHANISM"
+                },
+                {
+                    "timestamp": "30:00",
+                    "text": "Quand je les ai, je sais pourquoi je les ai. Quand je les ai, c'est que je refais des trucs ou des habitudes qu'on a vu ensemble qui sont toxiques pour le corps et pour l'esprit.",
+                    "functional_tag": "PROOF_AWARENESS",
+                    "cluster": "W4_PROOF"
+                }
+            ]
+        }
+    ],
+    "composed_script_recommendation": {
+        "premise_to_use": 1,
+        "title": "Du Spectateur au Créateur de sa Vie - Matthis",
+        "estimated_duration": "58 seconds",
+        "witness_arc_composition": {
+            "W1_HOOK": {
+                "quote": "Avec Adele, on travaille sur la détoxe pas seulement du corps mais sur la détoxe de l'esprit, la détoxe émotionnelle.",
+                "timestamp": "23:20",
+                "timing": "0-6s",
+                "scene_code": "HOOK-1-AB-2"
+            },
+            "W2_PROBLEM": {
+                "quote": "Moi je suis un grand anxieux de base. La tête vraiment pleine de pensées en arborescence. J'étais très souvent assailli par l'autosabotage. C'était beaucoup de fatigue chronique, brouillard mental. L'impression de subir en fait, d'être spectateur.",
+                "timestamps": [
+                    "3:37",
+                    "4:00",
+                    "6:00"
+                ],
+                "timing": "6-18s",
+                "scene_code": "SETUP-1-B-1"
+            },
+            "W3_MECHANISM": {
+                "quote": "C'est comme si j'avais une échelle de lucidité en face de moi et semaine après semaine, j'escaladé un barreau supplémentaire. Ce qui m'a impacté, c'est le courage de prendre mes responsabilités.",
+                "timestamps": [
+                    "8:44",
+                    "11:06"
+                ],
+                "timing": "18-32s",
+                "scene_code": "TURNING_POINT-1-B-1"
+            },
+            "W4_PROOF": {
+                "quote": "Avant mon énergie c'était 4 sur 10, maintenant c'est 7. Je suis monté sur scène trois fois ce mois-ci. Je suis créateur de tout ce qui m'arrive sur tous les plans.",
+                "timestamps": [
+                    "10:09",
+                    "40:02",
+                    "25:00"
+                ],
+                "timing": "32-48s",
+                "scene_code": "RESOLUTION-1-B-1"
+            },
+            "W5_CLOSE": {
+                "quote": "[ADELE] La vie ne se pense pas. La vie s'incarne dans l'expérience. On a allumé en toi l'esprit d'incarner la divinité que tu es. Et la divinité n'a pas peur.",
+                "timestamps": [
+                    "38:01",
+                    "40:16"
+                ],
+                "timing": "48-58s",
+                "scene_code": "ENCOURAGE-1-A-1"
+            }
+        }
+    },
+    "validation_checklist": {
+        "client_is_protagonist": true,
+        "coach_in_hook": true,
+        "coach_in_close": true,
+        "problem_specific": true,
+        "mechanism_clear": true,
+        "proof_with_numbers": true,
+        "authentic_voice": true,
+        "duration_55_65s": true,
+        "quality_score": "92/100"
+    }
+}
