@@ -88,7 +88,39 @@ For CMF batch processing, we exclusively use headless mode. Here's why: when you
 
 ## 4. Google Cloud Shell: Your Production Powerhouse <a name="cloud-shell"></a>
 
-Google Cloud Shell is a free, browser-based Linux environment provided by Google. It's the ideal platform for running CMF workflows at scale because it provides all the infrastructure you need without any local setup or resource constraints. Understanding Cloud Shell is essential if you want to orchestrate 5 or more projects per day efficiently.
+Google Cloud Shell is a free, browser-based Linux environment provided by Google. It's the ideal platform for running CMF workflows at scale because it provides all the infrastructure you need without any local setup or resource constraints.
+
+### 🚀 Cloud Shell Quick Start Guide
+
+**1. Get the Code**
+Run this in your Cloud Shell terminal:
+```bash
+git clone https://github.com/Remjohn/cmf.git
+cd cmf
+```
+
+**2. Install Dependencies**
+We need to install the Python libraries for our tools:
+```bash
+pip install openai python-dotenv requests
+```
+
+**3. Configure Secrets (CRITICAL)**
+Since we (wisely) ignored the `.env` file, you must recreate it.
+*   Run: `nano .env`
+*   Paste your keys:
+    ```env
+    OPENROUTER_API_KEY=your_key_here
+    RUNPOD_API_KEY=your_key_here
+    ```
+*   Save: Press `Ctrl+O`, `Enter`, then `Ctrl+X`.
+
+**4. Ready to Launch**
+Now you can open multiple tabs and run:
+```bash
+./RUN_PIPELINE.ps1
+```
+*(Note: If you run into permission issues, run `chmod +x RUN_PIPELINE.ps1`)*
 
 ### What Cloud Shell Provides
 
