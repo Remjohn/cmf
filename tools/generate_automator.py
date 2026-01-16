@@ -43,7 +43,7 @@ function Run-Step {{
     }}
     
     if ($allExist) {{
-        Write-Host "✓ [SKIP] $Name: All required files exist." -ForegroundColor DarkGray
+        Write-Host "✓ [SKIP] ${{Name}}: All required files exist." -ForegroundColor DarkGray
         return
     }}
 
@@ -116,7 +116,7 @@ $imagesDir = Join-Path $projectPath "generated_images"
 
 # We run the image generator if the folder doesn't exist OR if user forces it.
 Write-Host "Running OpenRouter Image Generator..." -ForegroundColor Cyan
-python "$basePath\tools\cmf_image_generator.py" --project "$projectId" --type all
+python "$basePath/tools/cmf_image_generator.py" --project "$projectId" --type all
 
 Write-Host ""
 Write-Host "✨ PIPELINE COMPLETE FOR {project_id} ✨" -ForegroundColor Green
