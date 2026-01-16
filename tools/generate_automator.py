@@ -22,9 +22,11 @@ TEMPLATE = """<#
 #>
 
 $ErrorActionPreference = "Stop"
-$projectPath = "{project_path}"
+$ErrorActionPreference = "Stop"
+$projectPath = $PSScriptRoot
 $projectId = "{project_id}"
-$basePath = "{base_path}"
+# Calculate base path: Go up 4 levels from project folder to root
+$basePath = (Resolve-Path (Join-Path $PSScriptRoot "../../../..")).Path
 
 function Run-Step {{
     param (

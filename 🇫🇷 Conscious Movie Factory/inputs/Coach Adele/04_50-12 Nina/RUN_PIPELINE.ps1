@@ -9,9 +9,11 @@
 #>
 
 $ErrorActionPreference = "Stop"
-$projectPath = "d:\Work\The Conscious Movie Factory December\🇫🇷 Conscious Movie Factory\inputs\Coach Adele\04_50-12 Nina"
+$ErrorActionPreference = "Stop"
+$projectPath = $PSScriptRoot
 $projectId = "04_50-12 Nina"
-$basePath = "d:\Work\The Conscious Movie Factory December"
+# Calculate base path: Go up 4 levels from project folder to root
+$basePath = (Resolve-Path (Join-Path $PSScriptRoot "../../../..")).Path
 
 function Run-Step {
     param (
