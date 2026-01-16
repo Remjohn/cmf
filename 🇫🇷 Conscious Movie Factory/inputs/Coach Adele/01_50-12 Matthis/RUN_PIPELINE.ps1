@@ -9,7 +9,6 @@
 #>
 
 $ErrorActionPreference = "Stop"
-$ErrorActionPreference = "Stop"
 $projectPath = $PSScriptRoot
 $projectId = "01_50-12 Matthis"
 # Calculate base path: Go up 4 levels from project folder to root
@@ -19,7 +18,7 @@ function Run-Step {
     param (
         [string]$Name,
         [string[]]$CheckFiles,
-        [string]$Command
+        [string]$WorkflowContent
     )
 
     $allExist = $true
@@ -39,7 +38,8 @@ function Run-Step {
     Write-Host "Deploying Agent: $Name..." -ForegroundColor Cyan
     
     # Run in headless mode (Fresh Session)
-    $prompt = "Project: $projectId`nPath: $projectPath`nExecute: $Command"
+    # We inject the FULL workflow content directly into the prompt
+    $prompt = "Project: $projectId`nPath: $projectPath`n`nINSTRUCTIONS:`n$WorkflowContent"
     
     gemini --prompt $prompt
     
@@ -66,37 +66,1008 @@ Write-Host ""
 
 Run-Step -Name "Diagnose" `
          -CheckFiles @("strategy_brief.json", "😎 01_50-12 Matthis - The Brand Avatar 😎.md") `
-         -Command "/cmf-phase1a-diagnose"
+         -WorkflowContent "---
+description: Story Diagnosis & Brand Avatar (Setup Phase)
+---
+
+# CMF PHASE 1A-DIAGNOSE: Setup & Discovery
+
+// turbo-all
+
+**Objective:** Diagnose the arc type and establish visual identity.
+
+**Prerequisites:**
+- ``{project_id}_transcript_clean.md``
+- Avatar image (PNG/JPG)
+
+---
+
+## STEP 1: STORY DOCTOR (Arc Diagnosis)
+
+**Agent:** ``agents/phase1_writers/THE STORY DOCTOR.md``
+**Guide:** ``intelligence/guides/🎯 ARC SELECTION GUIDE.md``
+
+#### 📋 MICRO TASKS
+- [ ] **PLAN:** Analyze transcript to detect arc type
+- [ ] **LOAD:** ``{project_id}_transcript_clean.md``
+- [ ] **EXECUTE:** Generate ``{project_id}_strategy_brief.json``
+- [ ] **VALIDATE:** Contains ``selected_arc`` + ``unified_frame_statement`` + ``protagonist_voice``
+
+**13 Supported Arcs:**
+| # | Arc | Use When |
+|---|-----|----------|
+| 1 | The Witness | Testimonial validation |
+| 2 | The Breakthrough | Transformation story |
+| 3 | The Shared Struggle | Empathy building |
+| 4 | The Confrontation | Challenge/opposition |
+| 5 | The Core Transformation | Identity shift |
+| 6 | The Warning | Prevention message |
+| 7 | The Rally | Collective movement |
+| 8 | The Divine Spark | Spiritual awakening |
+| 9 | The Call to Adventure | Invitation/invitation |
+| 9b | The Ticking Clock | Urgency/scarcity |
+| 10 | The Comedic Reframe | Satire/humor |
+| 11 | The Sacred Return | Integration/homecoming |
+| 12 | The Quiet Reflection | Wisdom/contemplation |
+
+**Output:** ``{project_id}_strategy_brief.json``
+
+---
+
+## STEP 2: BRAND AVATAR BUILDER (Visual DNA)
+
+**Agent:** ``agents/phase1_writers/THE BRAND AVATAR BUILDER.md``
+
+#### 📋 MICRO TASKS
+- [ ] **PLAN:** Extract physical DNA from avatar image
+- [ ] **LOAD:** Avatar image + ``strategy_brief.json``
+- [ ] **EXECUTE:** Generate ``😎 {project_id} - The Brand Avatar 😎.md``
+- [ ] **VALIDATE:** Contains PHYSICAL DNA block (Skin, Hair, Build, Features)
+
+**Critical Output Fields:**
+``````markdown
+## PHYSICAL DNA (INVARIANT)
+- **Skin:** [Exact tone, e.g., `"Light brown to caramel, warm undertones`"]
+- **Hair:** [Texture, style, color]
+- **Build:** [Body type, posture]
+- **Features:** [Face shape, distinguishing marks]
+``````
+
+**Output:** ``😎 {project_id} - The Brand Avatar 😎.md``
+
+---
+
+## ✅ PHASE COMPLETE CHECKLIST
+
+- [ ] ``{project_id}_strategy_brief.json`` exists
+- [ ] ``😎 {project_id} - The Brand Avatar 😎.md`` exists
+
+---
+
+## 🔗 NEXT: ``/cmf-phase1a-narrative``
+"
 
 Run-Step -Name "Narrative" `
          -CheckFiles @("01_50-12 Matthis_Quote_Manifest.md", "01_50-12 Matthis_Quote_Manifest_Enriched.md", "01_50-12 Matthis_premise_analysis.json") `
-         -Command "/cmf-phase1a-narrative"
+         -WorkflowContent "---
+description: Quote Mining & Premise Composition
+---
+
+# CMF PHASE 1A-NARRATIVE: Quote Mining → Composition
+
+// turbo-all
+
+**Objective:** Extract quotes, enrich with V3 data, compose premise, authorize arc.
+
+**Prerequisites:**
+- ``{project_id}_strategy_brief.json``
+- ``{project_id}_transcript_clean.md``
+- ``😎 {project_id} - The Brand Avatar 😎.md``
+
+---
+
+## THE 4-AGENT PIPELINE
+
+``````
+🔎 HUNTER → 📊 ANALYST → ✍️ COMPOSER → ⚔️ COMMANDER
+``````
+
+---
+
+## STEP 1: ARC HUNTER (Quote Extraction)
+
+**Agent:** Route to specific Hunter based on ``strategy_brief.selected_arc``
+**Location:** ``agents/phase1_writers/hunters/``
+
+#### 📋 MICRO TASKS
+- [ ] **PLAN:** Extract 24-32 raw quotes using arc-specific rules
+- [ ] **LOAD:** ``transcript_clean.md`` + ``strategy_brief.json``
+- [ ] **EXECUTE:** Generate ``{project_id}_Quote_Manifest.md``
+- [ ] **VALIDATE:** 24-32 quotes with ``functional_tag`` + ``viral_score``
+
+**Hunter Routing:**
+| Arc | Hunter File |
+|-----|-------------|
+| Witness | ``🔎 THE WITNESS HUNTER.md`` |
+| Breakthrough | ``🔎 THE BREAKTHROUGH HUNTER.md`` |
+| Shared Struggle | ``🔎 THE SHARED STRUGGLE HUNTER.md`` |
+| ... | (13 total) |
+
+**Output:** ``{project_id}_Quote_Manifest.md``
+
+---
+
+## STEP 2: ARC ANALYST (V3 Enrichment)
+
+**Agent:** Route to specific Analyst based on arc
+**Location:** ``agents/phase1_writers/analysts/``
+
+#### 📋 MICRO TASKS
+- [ ] **PLAN:** Enrich quotes with V3 narrative coherence data
+- [ ] **LOAD:** ``Quote_Manifest.md`` + ``strategy_brief.json``
+- [ ] **EXECUTE:** Generate ``{project_id}_Quote_Manifest_Enriched.md``
+- [ ] **VALIDATE:** All quotes tagged with THEMATIC_FIT, PACING, POLARITY, GLUE
+
+**V3 Enrichment Tags:**
+- ``THEMATIC_FIT`` (0-100)
+- ``PACING_CLASS`` (STACCATO/LEGATO)
+- ``POLARITY_CATEGORIES``
+- ``PHILOSOPHICAL_WEIGHT`` (0-10)
+- ``GLUE_SCORE`` (0-100)
+- ``HIGH_AFFINITY_SEQUENCES``
+
+**Output:** ``{project_id}_Quote_Manifest_Enriched.md``
+
+---
+
+## STEP 3: STORY COMPOSER (Premise Assembly)
+
+**Agent:** Route to specific Composer based on arc
+**Location:** ``agents/phase1_writers/composers/``
+
+#### 📋 MICRO TASKS
+- [ ] **PLAN:** Assemble best quotes into 60-90s premise
+- [ ] **LOAD:** ``Quote_Manifest_Enriched.md`` + ``strategy_brief.json``
+- [ ] **EXECUTE:** Generate ``{project_id}_premise_analysis.json``
+- [ ] **VALIDATE:** Duration 60-90s. Arc rules applied. JSON valid.
+
+**Composition Rules:**
+- Max 3 quotes per cluster (if stacking)
+- Favor punchy 3-5s fragments over 12s blocks
+- Enforce 60-90 second total duration
+
+**Output:** ``{project_id}_premise_analysis.json``
+
+---
+
+## STEP 4: ARC COMMANDER (Premise Authorization)
+
+**Agent:** Route to specific Commander based on arc
+**Location:** ``agents/commanders/arc_commanders/``
+
+#### 📋 MICRO TASKS
+- [ ] **PLAN:** Validate premise using 14 boolean checks (10 arc + 4 V3)
+- [ ] **LOAD:** ``premise_analysis.json`` + ``Quote_Manifest_Enriched.md``
+- [ ] **EXECUTE:** Generate ``{project_id}_[ARC]_AUTHORIZED.md``
+- [ ] **VALIDATE:** Quality score ≥75. All critical checks PASS.
+
+**14-Point Checklist:**
+| # | Check | Type |
+|---|-------|------|
+| 1-10 | Arc-Specific Rules | Boolean |
+| 11 | Template Match | V3 |
+| 12 | Bookend Check | V3 |
+| 13 | Beat Map | V3 |
+| 14 | Narrative Coherence | V3 |
+
+**Authorization Thresholds:**
+- **≥75:** ✅ AUTHORIZED
+- **<75:** ❌ REJECTION_NOTE.md with fixes
+
+**Output:** ``{project_id}_[ARC]_AUTHORIZED.md``
+
+---
+
+## ✅ PHASE COMPLETE CHECKLIST
+
+- [ ] ``{project_id}_Quote_Manifest.md``
+- [ ] ``{project_id}_Quote_Manifest_Enriched.md``
+- [ ] ``{project_id}_premise_analysis.json``
+- [ ] ``{project_id}_[ARC]_AUTHORIZED.md`` (Quality ≥75)
+
+---
+
+## 🔗 NEXT: ``/cmf-phase1a-script``
+"
 
 Run-Step -Name "Script" `
          -CheckFiles @("final_script.json") `
-         -Command "/cmf-phase1a-script"
+         -WorkflowContent "---
+description: Script Assembly & Authorization
+---
+
+# CMF PHASE 1A-SCRIPT: Final Script Production
+
+// turbo-all
+
+**Objective:** Assemble final script and authorize for production.
+
+**Prerequisites:**
+- ``{project_id}_premise_analysis.json``
+- ``{project_id}_[ARC]_AUTHORIZED.md``
+- ``{project_id}_transcript_clean.md`` (for timestamp verification)
+
+---
+
+## THE 2-AGENT PIPELINE
+
+``````
+✍️ SCRIPT ASSEMBLY → ⚔️ SCRIPT COMMANDER
+``````
+
+---
+
+## STEP 1: SCRIPT ASSEMBLY
+
+**Agent:** Route to specific Composer based on arc
+**Location:** ``agents/phase1_writers/composers/``
+
+#### 📋 MICRO TASKS
+- [ ] **PLAN:** Format premise quotes into Conscious Arc structure
+- [ ] **LOAD:** ``premise_analysis.json`` + ``[ARC]_AUTHORIZED.md``
+- [ ] **EXECUTE:** Generate ``{project_id}_final_script.json``
+- [ ] **VALIDATE:** JSON valid. Timestamps present. HOOK→CTA structure.
+
+**Conscious Arc Structure:**
+``````json
+{
+  `"scenes`": [
+    {`"id`": `"W1_HOOK`", `"quote`": `"...`", `"start`": `"00:00`", `"end`": `"00:05`"},
+    {`"id`": `"W2_PROBLEM`", `"quote`": `"...`", `"start`": `"...`", `"end`": `"...`"},
+    {`"id`": `"W3_MECHANISM`", `"quote`": `"...`", `"start`": `"...`", `"end`": `"...`"},
+    {`"id`": `"W4_PROOF`", `"quote`": `"...`", `"start`": `"...`", `"end`": `"...`"},
+    {`"id`": `"W5_CLOSE`", `"quote`": `"...`", `"start`": `"...`", `"end`": `"...`"}
+  ]
+}
+``````
+
+**Output:** ``{project_id}_final_script.json``
+
+---
+
+## STEP 2: SCRIPT COMMANDER (Final Authorization)
+
+**Agent:** Route to specific Commander based on arc
+**Location:** ``agents/commanders/arc_commanders/``
+
+#### 📋 MICRO TASKS
+- [ ] **PLAN:** Validate script for production readiness
+- [ ] **LOAD:** ``final_script.json`` + ``transcript_clean.md``
+- [ ] **EXECUTE:** Generate ``{project_id}_SCRIPT_AUTHORIZED.md``
+- [ ] **VALIDATE:** All 4 checks PASS
+
+**4-Point Script Checklist:**
+| # | Check | Fail Behavior |
+|---|-------|---------------|
+| 1 | **Timestamp Citation** | Every quote has source timestamp? |
+| 2 | **Voice Fidelity** | Does it sound like the person? |
+| 3 | **Arc Match** | Follows selected arc structure? |
+| 4 | **JSON Valid** | Formatting correct? |
+
+**Output:** ``{project_id}_SCRIPT_AUTHORIZED.md``
+
+---
+
+## ✅ PHASE COMPLETE CHECKLIST
+
+- [ ] ``{project_id}_final_script.json``
+- [ ] ``{project_id}_SCRIPT_AUTHORIZED.md``
+
+---
+
+## ⛔ PHASE 1A GATE COMPLETE
+
+**ALL must exist before Phase 1B:**
+- [ ] ``{project_id}_strategy_brief.json``
+- [ ] ``😎 {project_id} - The Brand Avatar 😎.md``
+- [ ] ``{project_id}_[ARC]_AUTHORIZED.md``
+- [ ] ``{project_id}_SCRIPT_AUTHORIZED.md``
+
+---
+
+## 🔗 NEXT: Run in parallel:
+- ``/cmf-phase1b-sonic``
+- ``/cmf-phase1b-storyboard``
+- ``/cmf-phase1b-motion``
+
+Then: ``/cmf-phase1b-authorize``
+"
 
 # --- PHASE 1B: VISUAL ---
 
 Run-Step -Name "Sonic" `
          -CheckFiles @("01_50-12 Matthis_sonic_sommelier_brief.md") `
-         -Command "/cmf-phase1b-sonic"
+         -WorkflowContent "---
+description: Sonic Engineering (Music prompts for Suno/Udio)
+---
+
+# CMF PHASE 1B-SONIC: Music Engineering
+
+// turbo-all
+
+**Objective:** Generate music prompts for the project soundtrack.
+
+**Prerequisites:**
+- ``{project_id}_SCRIPT_AUTHORIZED.md`` (from Phase 1)
+- ``{project_id}_final_script.json``
+- ``Tribe_Soul_Profile.md`` (Coach-level file)
+
+---
+
+## STEP 1: SONIC SOMMELIER (Genre Pairing)
+
+**Agent:** ``agents/sonic/The Sonic Sommelier (Musicologist).md``
+**Guide:** ``intelligence/guides/🎶 The Sonic Sommelier.md``
+
+#### 📋 MICRO TASKS
+- [ ] **LOAD:** ``final_script.json`` + ``Tribe_Soul_Profile.md`` + ``Genre Library.txt``
+- [ ] **EXECUTE:** Generate ``{project_id}_sonic_sommelier_brief.md``
+- [ ] **VALIDATE:** Contains BPM Range + Genre Blend + Cultural Insight + Reference Artists
+
+**Actions:**
+1. Load Cultural Data (Tribe Soul Profile)
+2. Analyze Narrative Emotional Arc
+3. Select `"Vintage`" (BPM + Genre + Instruments to Avoid)
+4. Generate Sourcing Brief
+
+**Output:** ``{project_id}_sonic_sommelier_brief.md``
+
+---
+
+## STEP 2: SONIC SCRIBE (Suno Prompt)
+
+**Agent:** ``agents/sonic/The Sonic Scribe (Composer).md``
+
+#### 📋 MICRO TASKS
+- [ ] **LOAD:** ``sonic_sommelier_brief.md`` + ``final_script.json``
+- [ ] **EXECUTE:** Generate ``{project_id}_sonic_scribe_output.md``
+- [ ] **VALIDATE:** Contains Suno V5 Prompt + Song Structure Tags + Style Descriptors
+
+**Actions:**
+1. Translate Emotional Arc → Song Structure (``[Intro]``, ``[Verse]``, ``[Chorus]``)
+2. Add Style Descriptors from Sommelier Brief
+3. Add `"Sonic Vacuum`" commands (silence breaks)
+4. Final Assembly: Complete Suno.ai prompt
+
+**Output:** ``{project_id}_sonic_scribe_output.md``
+
+---
+
+## ✅ PHASE COMPLETE CHECKLIST
+
+- [ ] ``{project_id}_sonic_sommelier_brief.md`` exists
+- [ ] ``{project_id}_sonic_scribe_output.md`` exists
+
+---
+
+## 🔗 NEXT: Run in parallel with:
+- ``/cmf-phase1b-storyboard``
+- ``/cmf-phase1b-motion``
+
+Then run: ``/cmf-phase1b-authorize``
+"
 
 Run-Step -Name "Storyboard" `
          -CheckFiles @("01_50-12 Matthis_STORYBOARD_PRIMAL.md", "01_50-12 Matthis_STORYBOARD_STRUCTURED.md", "01_50-12 Matthis_STORYBOARD_VISUAL_POETRY.md") `
-         -Command "/cmf-phase1b-storyboard"
+         -WorkflowContent "---
+description: Storyboard Pipeline (A-Roll Hero Frames)
+---
+
+# CMF PHASE 1B-STORYBOARD: A-Roll Visual Prompts
+
+// turbo-all
+
+**Objective:** Generate photorealistic hero frame prompts for the main A-Roll footage.
+
+**Prerequisites:**
+- ``{project_id}_SCRIPT_AUTHORIZED.md``
+- ``{project_id}_final_script.json``
+- ``😎 {project_id} - The Brand Avatar 😎.md``
+
+---
+
+## THE 5-AGENT PIPELINE
+
+``````
+🎬 ARCHITECT → 🔍 ANALYST → 📸 PHOTOGRAPHER → ✍️ POET → ⚔️ COMMANDER
+``````
+
+---
+
+## STEP 1: STORYBOARD ARCHITECT (Primal Analysis)
+
+**Agent:** ``agents/phase1_writers/THE STORYBOARD ARCHITECT v3.0 (PRIMAL EDITION).md``
+
+#### 📋 MICRO TASKS
+- [ ] **LOAD:** ``final_script.json`` + ``Brand Avatar.md``
+- [ ] **EXECUTE:** Generate ``{project_id}_STORYBOARD_PRIMAL.md``
+- [ ] **VALIDATE:** Each scene has T-Code + V-Code + Arc Beat + PRIMAL Analysis
+
+**Output:** ``{project_id}_STORYBOARD_PRIMAL.md``
+
+---
+
+## STEP 2: VISUAL ANALYST (Validation)
+
+**Agent:** ``agents/phase1_writers/THE VISUAL ANALYST AGENT.md``
+
+#### 📋 MICRO TASKS
+- [ ] **LOAD:** ``STORYBOARD_PRIMAL.md`` + ``Brand Avatar.md``
+- [ ] **EXECUTE:** Generate ``{project_id}_STORYBOARD_ENRICHED.md``
+- [ ] **VALIDATE:** 8-point validation complete
+
+**8-Point Validation:**
+1. T-Code Consistency
+2. V-Code Hierarchy
+3. **CHARACTER ANCHOR IMMUTABILITY** ⚠️ CRITICAL
+4. SPR Coherence
+5. Environment Logic
+6. Timestamp Accuracy
+7. Arc Progression
+8. Uniqueness Check
+
+**Output:** ``{project_id}_STORYBOARD_ENRICHED.md``
+
+---
+
+## STEP 3: COMPASSIONATE PHOTOGRAPHER (Structure)
+
+**Agent:** ``agents/phase1_writers/THE COMPASSIONATE PHOTOGRAPHER AGENT.md``
+
+#### 📋 MICRO TASKS
+- [ ] **LOAD:** ``STORYBOARD_ENRICHED.md`` + ``Brand Avatar.md``
+- [ ] **EXECUTE:** Generate ``{project_id}_STORYBOARD_STRUCTURED.md``
+- [ ] **VALIDATE:** Each scene has SPR (16 words) + 6-Block Structure
+
+**6-Block Output per Scene:**
+- ``[PRIMING (SPR)]``
+- ``[CHARACTER ANCHOR]``
+- ``[CINEMATIC COMPOSITION]``
+- ``[MATERIAL PHYSICS]``
+- ``[LIGHT BEHAVIOR]``
+- ``[THE NARRATIVE MOMENT]``
+
+**Output:** ``{project_id}_STORYBOARD_STRUCTURED.md``
+
+---
+
+## STEP 4: PROSE POET (Final Translation)
+
+**Agent:** ``agents/phase1_writers/THE PROSE POET AGENT.md``
+
+#### 📋 MICRO TASKS
+- [ ] **LOAD:** ``STORYBOARD_STRUCTURED.md`` + ``Brand Avatar.md``
+- [ ] **EXECUTE:** Generate ``{project_id}_STORYBOARD_VISUAL_POETRY.md``
+- [ ] **VALIDATE:** NO headers in output. Biological hook first. `"Hyper-realistic`" ending.
+
+**6-Paragraph Pure Prose Structure:**
+1. BIOLOGICAL HOOK + CHARACTER
+2. CAMERA + FRAMING
+3. FULL BODY + GESTURE
+4. LIGHT + ATMOSPHERE
+5. NARRATIVE + SUBTEXT
+6. TECHNICAL GROUNDING
+
+**Output:** ``{project_id}_STORYBOARD_VISUAL_POETRY.md``
+
+---
+
+## STEP 5: STORYBOARD COMMANDER (Authorization)
+
+**Agent:** ``agents/commanders/THE STORYBOARD BATCH COMMANDER.md``
+
+#### 📋 MICRO TASKS
+- [ ] **LOAD:** ``STORYBOARD_VISUAL_POETRY.md`` + ``Brand Avatar.md``
+- [ ] **EXECUTE:** Generate ``{project_id}_STORYBOARD_AUTHORIZED.md``
+- [ ] **VALIDATE:** Avatar verbatim. Tone consistent. No codes visible.
+
+**Output:** ``{project_id}_STORYBOARD_AUTHORIZED.md``
+
+---
+
+## ✅ PHASE COMPLETE CHECKLIST
+
+- [ ] ``{project_id}_STORYBOARD_PRIMAL.md``
+- [ ] ``{project_id}_STORYBOARD_ENRICHED.md``
+- [ ] ``{project_id}_STORYBOARD_STRUCTURED.md``
+- [ ] ``{project_id}_STORYBOARD_VISUAL_POETRY.md``
+- [ ] ``{project_id}_STORYBOARD_AUTHORIZED.md``
+
+---
+
+## 🔗 NEXT: Run ``/cmf-phase1b-authorize``
+"
 
 Run-Step -Name "Motion" `
          -CheckFiles @("01_50-12 Matthis_GMG_PROMPTS.md", "01_50-12 Matthis_CAC_PROMPTS.md") `
-         -Command "/cmf-phase1b-motion"
+         -WorkflowContent "---
+description: Motion Graphics Pipeline (GMG + CAC B-Roll)
+---
+
+# CMF PHASE 1B-MOTION: GMG + CAC Prompts
+
+// turbo-all
+
+**Objective:** Generate abstract motion graphics (GMG) and ambient cinema (CAC) B-Roll prompts.
+
+**Prerequisites:**
+- ``{project_id}_final_script.json``
+- ``😎 {project_id} - The Brand Avatar 😎.md``
+
+---
+
+## PART A: GMG (Generative Motion Graphics)
+
+### STEP 1: GMG COMPOSER
+
+**Agent:** ``Motion Cookbook/03_GMG_Generative_Motion_Graphics/GMG_Composer_Agent.md``
+**Constitution:** ``Motion Cookbook/03_GMG_Generative_Motion_Graphics/THE GMG CONSTITUTION.md``
+
+#### 📋 MICRO TASKS
+- [ ] **LOAD:** ``final_script.json`` + Constitution + Expert files (01-06)
+- [ ] **EXECUTE:** Generate ``{project_id}_GMG_PROMPTS.md``
+- [ ] **VALIDATE:** Each scene has Expert# + Single Word + 3-Phase Prompts
+
+**Expert Palette Matrix:**
+| Expert | Primary Color | Accent |
+|--------|--------------|--------|
+| Exp 01 | Forest Green | Gold |
+| Exp 02 | Grayscale | Gold |
+| Exp 03 | Grayscale Materials | Gold |
+| Exp 06 | **WHITE ONLY** | **NO GOLD** |
+
+**Output:** ``{project_id}_GMG_PROMPTS.md``
+
+---
+
+### STEP 2: GMG VISUAL ANALYST
+
+**Agent:** ``agents/phase1_writers/GMG_VISUAL_ANALYST.md``
+
+#### 📋 MICRO TASKS
+- [ ] **LOAD:** ``GMG_PROMPTS.md`` + Constitution
+- [ ] **EXECUTE:** Generate ``{project_id}_GMG_ENRICHED.md``
+- [ ] **VALIDATE:** 6 GMG-specific checks per scene
+
+**GMG Checks:**
+- G1: Expert-Specific Palette
+- G2: Single Word Law
+- G3: Expert Routing
+- G4: Expert Voice Consistency
+- G5: 3-Phase Completeness
+- G6: Word Count Compliance
+
+**Output:** ``{project_id}_GMG_ENRICHED.md``
+
+---
+
+## PART B: CAC (Conscious Ambient Cinema)
+
+### STEP 3: CAC COMPOSER
+
+**Agent:** ``Motion Cookbook/04_CAC_Conscious_Ambient_Cinema/CAC_Composer_Agent.md``
+**Metaphor Library:** ``Motion Cookbook/04_CAC_Conscious_Ambient_Cinema/THE CAC METAPHOR LIBRARY.md``
+
+#### 📋 MICRO TASKS
+- [ ] **LOAD:** ``final_script.json`` + Metaphor Library + ``Brand Avatar.md``
+- [ ] **EXECUTE:** Generate ``{project_id}_CAC_PROMPTS.md``
+- [ ] **VALIDATE:** Each scene has Archetype# + El Shaddai Prompt (180-260 words) + Motion Spec
+
+**El Shaddai Requirements:**
+- 180-260 word prose poem
+- Mundane Anchor (grounding prop)
+- Sensory Stacking (Touch + Temp + Sight)
+- Character Anchor injected
+
+**Output:** ``{project_id}_CAC_PROMPTS.md``
+
+---
+
+### STEP 4: CAC VISUAL ANALYST
+
+**Agent:** ``agents/phase1_writers/CAC_VISUAL_ANALYST.md``
+
+#### 📋 MICRO TASKS
+- [ ] **LOAD:** ``CAC_PROMPTS.md`` + Metaphor Library
+- [ ] **EXECUTE:** Generate ``{project_id}_CAC_ENRICHED.md``
+- [ ] **VALIDATE:** 7 CAC-specific checks per scene
+
+**CAC Checks:**
+- C1: Metaphor Library Compliance (01-24)
+- C2: Emotional Routing Accuracy
+- C3: Word Count (180-260)
+- C4: Mundane Anchor Presence
+- C5: Sensory Stacking
+- C6: El Shaddai Structure
+- C7: Motion Spec Validity
+
+**Output:** ``{project_id}_CAC_ENRICHED.md``
+
+---
+
+## ✅ PHASE COMPLETE CHECKLIST
+
+**GMG:**
+- [ ] ``{project_id}_GMG_PROMPTS.md``
+- [ ] ``{project_id}_GMG_ENRICHED.md``
+
+**CAC:**
+- [ ] ``{project_id}_CAC_PROMPTS.md``
+- [ ] ``{project_id}_CAC_ENRICHED.md``
+
+---
+
+## 🔗 NEXT: Run ``/cmf-phase1b-authorize``
+"
 
 Run-Step -Name "E-Roll (Cultural DNA)" `
          -CheckFiles @("01_50-12 Matthis_ERoll_Deep_Research_Report.md", "01_50-12 Matthis_ERoll_Search_Queries.json", "01_50-12 Matthis_EROLL_AUTHORIZED.md") `
-         -Command "/cmf-eroll"
+         -WorkflowContent "---
+description: Execute the full E-Roll Cultural DNA image procurement workflow
+---
+
+# CMF E-ROLL: CULTURAL DNA RESEARCH (V15 - Micro Task Architecture)
+
+// turbo-all
+
+**Objective:** Procure culturally-specific E-Roll images using the locked 5-Phase Deep Research workflow.
+
+**Prerequisite:** Run ``/cmf-phase1-visual`` FIRST. This workflow requires:
+- ``{project_id}_final_script.json``
+- ``Tribe_Soul_Profile.md`` (at Coach level)
+- ``😎 {project_id} - The Brand Avatar 😎.md`` (if exists)
+
+**Critical Reference:** ``intelligence/guides/🔮 E-Roll Research Planning Generator.md``
+
+> [!CAUTION]
+> **DO NOT GENERATE SEARCH QUERIES WITHOUT A DEEP RESEARCH REPORT.**
+> Generic queries like `"ladder climbing success`" are FORBIDDEN.
+> Every query MUST reference a VERIFIED cultural source.
+
+---
+
+## STEP 1: INPUT GATHERING
+
+#### 📋 MICRO TASK LIST: 1A_INPUT_GATHER
+- [ ] **PLAN:** I will extract cultural DNA themes from project inputs.
+- [ ] **LOAD:** I have read ``final_script.json`` + ``Tribe_Soul_Profile.md`` + ``Brand Avatar.md``.
+- [ ] **EXECUTE:** I have extracted: Transformation themes, Tribe slang, Heroes, Enemies.
+- [ ] **VALIDATE:** I have cultural grounding (NOT just script themes).
+
+**Actions:**
+1. Read ``final_script.json`` - Extract transformation journey themes
+2. Read ``Tribe_Soul_Profile.md`` - Extract ``tribe_slang``, ``shared_heroes``, ``common_enemies``
+3. Read ``Brand Avatar.md`` - Coach positioning context
+
+---
+
+## STEP 2: 12 INTROSPECTION QUESTIONS
+
+#### 📋 MICRO TASK LIST: 2A_INTROSPECTION
+- [ ] **PLAN:** I will answer 12 questions FROM THE CULTURAL PERSPECTIVE.
+- [ ] **LOAD:** I have internalized the Tribe Soul Profile cultural context.
+- [ ] **EXECUTE:** I have answered all 12 questions with cultural specifics.
+- [ ] **VALIDATE:** Answers contain NAMED references (not `"ladder`" or `"light`").
+
+> [!IMPORTANT]
+> Answer about THE CULTURE, not the script.
+> If your answer is generic (e.g., `"ladder`"), you're doing it wrong.
+
+**The 12 Questions (6 Angles × 2 each):**
+
+### Language & Codes
+1. What words, slang, or greetings identify `"insiders`" in this culture?
+2. What visual signals or gestures would only insiders recognize?
+
+### Aesthetics & Symbols
+3. What colors, textures, or styles define this culture's visual identity?
+4. What sacred symbols, adornments, or objects carry deep meaning?
+
+### Rituals & Behaviors
+5. What daily or ceremonial practices define this community?
+6. What preparation or cleansing rituals are sacred to this culture?
+
+### Heroes, Elders & Icons
+7. Who are the NAMED figures this audience reveres (living or ancestral)?
+8. What archetypes (healer, warrior, mother) resonate with this tribe?
+
+### Opposition, Wounds & Enemy
+9. What systems threatened or tried to erase this culture?
+10. What shared wounds or traumas bind this community together?
+
+### Shared Emotional Truths
+11. What collective emotions (pride, grief, reclamation) define this tribe?
+12. What future vision or aspiration unites this community?
+
+---
+
+## STEP 3: DEEP RESEARCH (MANDATORY - USE BROWSER)
+
+#### 📋 MICRO TASK LIST: 3A_DEEP_RESEARCH
+- [ ] **PLAN:** I will use BROWSER to find REAL, VERIFIABLE cultural references.
+- [ ] **LOAD:** I have my 12 answered introspection questions.
+- [ ] **EXECUTE:** I have found 2-3 NAMED references per angle with URLs.
+- [ ] **VALIDATE:** Every reference is VERIFIABLE (real person, event, brand, URL).
+
+> [!CAUTION]
+> You MUST use browser-based research. DO NOT hallucinate sources.
+
+**For each of 6 angles, find:**
+- 2-3 NAMED references (people, brands, events, works)
+- Source URLs where you verified the reference
+- Cultural context explaining why this resonates
+
+**Example Research Output:**
+| Angle | Reference | Source | Why It Resonates |
+|-------|-----------|--------|------------------|
+| Heroes | Fatima Douba | secretsdediongoma.com | Afro-holistic naturopath bridging ancestral wisdom |
+| Opposition | Syndrome Méditerranéen | France Inter article | Documented medical bias against Black patients |
+| Aesthetics | Maison Château Rouge | maisonchateaurouge.com | Remixed French symbols with African textiles |
+
+---
+
+## STEP 4: DEEP RESEARCH REPORT
+
+#### 📋 MICRO TASK LIST: 4A_RESEARCH_REPORT
+- [ ] **PLAN:** I will compile all verified references into a structured report.
+- [ ] **LOAD:** I have my research findings from Phase 3.
+- [ ] **EXECUTE:** I have generated ``{project_id}_ERoll_Deep_Research_Report.md``.
+- [ ] **VALIDATE:** Report contains: Tribe Summary + 6 Angles + Source URLs.
+
+**Output:** ``inputs/{project_folder}/{project_id}_ERoll_Deep_Research_Report.md``
+
+**Required Structure:**
+``````markdown
+# E-Roll Deep Research Report: [Project Name]
+
+## Tribe Profile Summary
+- Audience: [Description from Soul Profile]
+- Key Cultural Codes: [From slang/heroes/enemies]
+
+## ANGLE 1: Language, Codes & Signals
+### Verified References
+1. **[Reference Name]** - Source: [URL] - Relevance: [Why]
+2. **[Reference Name]** - Source: [URL] - Relevance: [Why]
+
+[Continue for all 6 angles]
+
+## Research Sources Used
+- [URL 1]
+- [URL 2]
+``````
+
+> [!IMPORTANT]
+> **NO QUERIES UNTIL THIS REPORT IS COMPLETE**
+
+---
+
+## STEP 5: SEARCH QUERY GENERATION
+
+#### 📋 MICRO TASK LIST: 5A_QUERY_GEN
+- [ ] **PLAN:** I will generate 24 queries (6 angles × 4 each) from the Report.
+- [ ] **LOAD:** I have read ``ERoll_Deep_Research_Report.md``.
+- [ ] **EXECUTE:** I have generated ``{project_id}_ERoll_Search_Queries.json``.
+- [ ] **VALIDATE:** Every query cites source from Report. No generic terms.
+
+**Output:** ``inputs/{project_folder}/{project_id}_ERoll_Search_Queries.json``
+
+**Query Quality Check:**
+| ❌ WRONG (Generic) | ✅ RIGHT (Culturally Specific) |
+|-------------------|-------------------------------|
+| `"ladder climbing success`" | `"Maison Château Rouge Youssouf Fofana Bogolan`" |
+| `"herbal cleanse detox`" | `"Kinkeliba thé longue vie African morning ritual`" |
+| `"breakthrough celebration`" | `"S'enjailler celebration Ivorian diaspora France`" |
+| `"divine light awakening`" | `"Retour aux Sources Ifa Yoruba spirituality France`" |
+
+**JSON Structure:**
+``````json
+{
+    `"project_id`": `"{project_id}`",
+    `"framework`": `"Cultural_DNA_6_Angles`",
+    `"deep_research_conducted`": true,
+    `"queries`": [
+        {
+            `"angle`": `"ANGLE_1_LANGUAGE_CODES`",
+            `"scene_code`": `"ANG1_01`",
+            `"query`": `"[CULTURALLY SPECIFIC QUERY]`",
+            `"source`": `"[From Deep Research Report]`"
+        }
+    ]
+}
+``````
+
+---
+
+## STEP 6: E-ROLL COMMANDER CHECK
+
+**Agent:** ``agents/commanders/THE E-ROLL RESEARCH COMMANDER.md``
+
+#### 📋 MICRO TASK LIST: 6A_EROLL_COMMANDER
+- [ ] **PLAN:** I will audit research ancestry + query specificity.
+- [ ] **LOAD:** I have read ``ERoll_Search_Queries.json`` + ``ERoll_Deep_Research_Report.md``.
+- [ ] **EXECUTE:** I have generated ``{project_id}_EROLL_AUTHORIZED.md``.
+- [ ] **VALIDATE:** Ancestry Check + Specificity Check passed.
+
+**Commander Checklist (from Guide):**
+- [ ] Deep Research Report exists and is complete?
+- [ ] Each angle has 2-3 NAMED, VERIFIED references?
+- [ ] No generic concepts (ladder, light, breakthrough)?
+- [ ] Every query cites a source from the Deep Research Report?
+- [ ] Queries use specific cultural terms, not script themes?
+
+**IF PASS:** Issue ``{project_id}_EROLL_AUTHORIZED.md``
+**IF FAIL:** Issue ``REJECTION_NOTE.md`` with specific fixes
+
+---
+
+## STEP 7: IMAGE HUNT (EXECUTION)
+
+#### 📋 MICRO TASK LIST: 7A_IMAGE_HUNT
+- [ ] **PLAN:** I will execute 24 image downloads using the queries.
+- [ ] **LOAD:** I have read ``EROLL_AUTHORIZED.md`` + ``ERoll_Search_Queries.json``.
+- [ ] **EXECUTE:** I have run ``image_hunter.py`` for all 24 queries.
+- [ ] **VALIDATE:** 24 images downloaded to ``04_assets/e-roll/``.
+
+**Execute for all 24 queries:**
+``````bash
+python tools/image_hunter.py \
+  --query `"[QUERY]`" \
+  --output_dir `"{PROJECT}/04_assets/e-roll`" \
+  --scene_code `"ANG{N}_{M}`" \
+  --project_id `"{PROJECT_ID}`" \
+  --count 1 \
+  --sources outscraper
+``````
+
+**Scene Code Mapping:**
+- ANG1_01 through ANG1_04 (Language)
+- ANG2_01 through ANG2_04 (Aesthetics)
+- ANG3_01 through ANG3_04 (Rituals)
+- ANG4_01 through ANG4_04 (Heroes)
+- ANG5_01 through ANG5_04 (Opposition)
+- ANG6_01 through ANG6_04 (Emotional)
+
+---
+
+## ⛔ E-ROLL GATE
+
+**ALL the following must exist before completion:**
+- [ ] ``{project_id}_ERoll_Deep_Research_Report.md``
+- [ ] ``{project_id}_ERoll_Search_Queries.json``
+- [ ] ``{project_id}_EROLL_AUTHORIZED.md``
+- [ ] ``04_assets/e-roll/`` contains 24 images
+
+---
+
+## DELIVERABLES CHECKLIST
+
+- [ ] ``{project_id}_ERoll_Deep_Research_Report.md``
+- [ ] ``{project_id}_ERoll_Search_Queries.json``
+- [ ] ``{project_id}_EROLL_AUTHORIZED.md``
+- [ ] 24 images in ``04_assets/e-roll/`` (ANG1-6 × 4 each)
+
+---
+
+## OUTPUT STRUCTURE
+
+``````
+{PROJECT}/
+├── {project_id}_ERoll_Deep_Research_Report.md
+├── {project_id}_ERoll_Search_Queries.json
+├── {project_id}_EROLL_AUTHORIZED.md
+└── 04_assets/
+    └── e-roll/
+        ├── {project_id}_ANG1_01_IMG_01.jpg
+        ├── {project_id}_ANG1_01_IMG_manifest.json
+        └── ... (24 images + manifests)
+``````
+
+---
+
+**END OF CMF E-ROLL COMMAND (V15)**
+"
 
 Run-Step -Name "Authorize" `
          -CheckFiles @("01_50-12 Matthis_PROMPTS_AUTHORIZED.md") `
-         -Command "/cmf-phase1b-authorize"
+         -WorkflowContent "---
+description: Final Visual Authorization (Visual Commander)
+---
+
+# CMF PHASE 1B-AUTHORIZE: Visual Commander
+
+// turbo-all
+
+**Objective:** Final quality gate for all visual prompts before image generation.
+
+**Prerequisites (ALL must exist):**
+- ``{project_id}_STORYBOARD_AUTHORIZED.md``
+- ``{project_id}_GMG_ENRICHED.md``
+- ``{project_id}_CAC_ENRICHED.md``
+- ``😎 {project_id} - The Brand Avatar 😎.md``
+
+---
+
+## STEP 1: VISUAL COMMANDER (Final Authorization)
+
+**Agent:** ``agents/phase1_writers/THE VISUAL COMMANDER AGENT.md``
+
+#### 📋 MICRO TASKS
+- [ ] **LOAD:** All ENRICHED files + ``Brand Avatar.md``
+- [ ] **EXECUTE:** Generate ``{project_id}_PROMPTS_AUTHORIZED.md``
+- [ ] **VALIDATE:** Visual Fidelity Score ≥ 90
+
+---
+
+## THE 15-POINT COMPLIANCE CHECKLIST
+
+### TIER 1: CRITICAL (10 pts each)
+| # | Check |
+|---|-------|
+| 1 | Character Anchor present in EVERY prompt? |
+| 2 | Physical DNA verbatim match across all scenes? |
+| 3 | Emotional Arc Progression visible? |
+
+### TIER 2: STRUCTURAL (7 pts each)
+| # | Check |
+|---|-------|
+| 4 | No T-Codes/V-Codes in prose? |
+| 5 | No system terminology? |
+| 6 | GMG: Expert-Specific Palette? |
+| 7 | GMG: Single Word Law? |
+| 8 | Expert Voice Consistency? |
+
+### TIER 3: DENSITY (5 pts each)
+| # | Check |
+|---|-------|
+| 9 | Word count compliance? |
+| 10 | CAC: Mundane Anchor present? |
+| 11 | CAC: Sensory Stacking? |
+| 12 | Camera/Lens specs present? |
+| 13 | `"Hyper-realistic`" ending? |
+
+### TIER 4: MOTION (3-5 pts each)
+| # | Check |
+|---|-------|
+| 14 | I2I Deconstruction logic? |
+| 15 | I2V Physics verbs? |
+
+---
+
+## AUTHORIZATION THRESHOLDS
+
+| Score | Verdict | Action |
+|-------|---------|--------|
+| **90-100** | ✅ AUTHORIZED | Ready for Phase 2 |
+| **75-89** | ⚠️ CONDITIONAL | Auto-fixes applied |
+| **50-74** | ❌ REJECTED | Return to Analyst |
+| **<50** | 🚫 CRITICAL | Return to Architect |
+
+---
+
+## ✅ PHASE COMPLETE
+
+**Output:** ``{project_id}_PROMPTS_AUTHORIZED.md``
+
+**Visual Fidelity Score:** Must be ≥ 90
+
+---
+
+## 🔗 NEXT PHASE
+
+All visual prompts are now authorized. Proceed to:
+- ``/cmf-eroll`` (E-Roll Research)
+- ``/cmf-phase2-static`` (Image Generation)
+"
 
 # --- PHASE 2: IMAGE GENERATION ---
 

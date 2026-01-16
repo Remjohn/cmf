@@ -2,6 +2,7 @@
 CMF Automator Generator
 Generates a `RUN_PIPELINE.ps1` script inside a project folder.
 The generated script is "Self-Healing": it checks for existing files and skips completed steps.
+It also inlines workflow instructions directly into the script to ensure Cloud Shell execution.
 """
 
 import os
@@ -10,6 +11,16 @@ from pathlib import Path
 
 TOOLS_PATH = r"d:\Work\The Conscious Movie Factory December\tools"
 BASE_PATH = r"d:\Work\The Conscious Movie Factory December"
+WORKFLOWS_PATH = Path(BASE_PATH) / ".agent" / "workflows"
+
+def load_workflow_content(workflow_name):
+    """Reads the content of a workflow markdown file."""
+    workflow_file = WORKFLOWS_PATH / f"{workflow_name}.md"
+    if workflow_file.exists():
+        # Escape backticks for PowerShell string interpolation
+        content = workflow_file.read_text(encoding="utf-8").replace("`", "``").replace('"', '`"')
+        return content
+    return f"Workflow {workflow_name} not found."
 
 TEMPLATE = """<#
     CMF INTELLIGENT PIPELINE - {project_id}
@@ -22,7 +33,6 @@ TEMPLATE = """<#
 #>
 
 $ErrorActionPreference = "Stop"
-$ErrorActionPreference = "Stop"
 $projectPath = $PSScriptRoot
 $projectId = "{project_id}"
 # Calculate base path: Go up 4 levels from project folder to root
@@ -32,7 +42,7 @@ function Run-Step {{
     param (
         [string]$Name,
         [string[]]$CheckFiles,
-        [string]$Command
+        [string]$WorkflowContent
     )
 
     $allExist = $true
@@ -52,7 +62,8 @@ function Run-Step {{
     Write-Host "Deploying Agent: $Name..." -ForegroundColor Cyan
     
     # Run in headless mode (Fresh Session)
-    $prompt = "Project: $projectId`nPath: $projectPath`nExecute: $Command"
+    # We inject the FULL workflow content directly into the prompt
+    $prompt = "Project: $projectId`nPath: $projectPath`n`nINSTRUCTIONS:`n$WorkflowContent"
     
     gemini --prompt $prompt
     
@@ -79,37 +90,37 @@ Write-Host ""
 
 Run-Step -Name "Diagnose" `
          -CheckFiles @("strategy_brief.json", "😎 {project_id} - The Brand Avatar 😎.md") `
-         -Command "/cmf-phase1a-diagnose"
+         -WorkflowContent "{wf_diagnose}"
 
 Run-Step -Name "Narrative" `
          -CheckFiles @("{project_id}_Quote_Manifest.md", "{project_id}_Quote_Manifest_Enriched.md", "{project_id}_premise_analysis.json") `
-         -Command "/cmf-phase1a-narrative"
+         -WorkflowContent "{wf_narrative}"
 
 Run-Step -Name "Script" `
          -CheckFiles @("final_script.json") `
-         -Command "/cmf-phase1a-script"
+         -WorkflowContent "{wf_script}"
 
 # --- PHASE 1B: VISUAL ---
 
 Run-Step -Name "Sonic" `
          -CheckFiles @("{project_id}_sonic_sommelier_brief.md") `
-         -Command "/cmf-phase1b-sonic"
+         -WorkflowContent "{wf_sonic}"
 
 Run-Step -Name "Storyboard" `
          -CheckFiles @("{project_id}_STORYBOARD_PRIMAL.md", "{project_id}_STORYBOARD_STRUCTURED.md", "{project_id}_STORYBOARD_VISUAL_POETRY.md") `
-         -Command "/cmf-phase1b-storyboard"
+         -WorkflowContent "{wf_storyboard}"
 
 Run-Step -Name "Motion" `
          -CheckFiles @("{project_id}_GMG_PROMPTS.md", "{project_id}_CAC_PROMPTS.md") `
-         -Command "/cmf-phase1b-motion"
+         -WorkflowContent "{wf_motion}"
 
 Run-Step -Name "E-Roll (Cultural DNA)" `
          -CheckFiles @("{project_id}_ERoll_Deep_Research_Report.md", "{project_id}_ERoll_Search_Queries.json", "{project_id}_EROLL_AUTHORIZED.md") `
-         -Command "/cmf-eroll"
+         -WorkflowContent "{wf_eroll}"
 
 Run-Step -Name "Authorize" `
          -CheckFiles @("{project_id}_PROMPTS_AUTHORIZED.md") `
-         -Command "/cmf-phase1b-authorize"
+         -WorkflowContent "{wf_authorize}"
 
 # --- PHASE 2: IMAGE GENERATION ---
 
@@ -141,7 +152,15 @@ def generate_script(project_folder_name):
         script_content = TEMPLATE.format(
             project_id=project_id,
             project_path=str(project_path),
-            base_path=BASE_PATH
+            base_path=BASE_PATH,
+            wf_diagnose=load_workflow_content("cmf-phase1a-diagnose"),
+            wf_narrative=load_workflow_content("cmf-phase1a-narrative"),
+            wf_script=load_workflow_content("cmf-phase1a-script"),
+            wf_sonic=load_workflow_content("cmf-phase1b-sonic"),
+            wf_storyboard=load_workflow_content("cmf-phase1b-storyboard"),
+            wf_motion=load_workflow_content("cmf-phase1b-motion"),
+            wf_eroll=load_workflow_content("cmf-eroll"),
+            wf_authorize=load_workflow_content("cmf-phase1b-authorize"),
         )
         
         # Write file
