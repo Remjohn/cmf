@@ -65,7 +65,8 @@ function Run-Step {{
     # We inject the FULL workflow content directly into the prompt
     $prompt = "Project: $projectId`nPath: $projectPath`n`nINSTRUCTIONS:`n$WorkflowContent"
     
-    gemini --prompt $prompt
+    # We explicitly force the model to gemini-3.0-pro-exp (The latest and greatest)
+    gemini --model "gemini-3.0-pro-exp" --prompt $prompt
     
     if ($LASTEXITCODE -ne 0) {{
         Write-Host "🛑 ERROR: $Name failed." -ForegroundColor Red
